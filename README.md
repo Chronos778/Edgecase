@@ -1,8 +1,5 @@
 # SCARO - Supply Chain Analyser for Risk and Overconfidence
 
-> **Team:** Localbros:3000  
-> **Event:** Echelon 2.0
-
 A production-ready AI-powered platform for real-time supply chain risk monitoring, disruption detection, and predictive analytics. SCARO combines advanced data scraping, machine learning, and interactive visualization to help organizations build more resilient supply chains.
 
 ## 🚀 Features
