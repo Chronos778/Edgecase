@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "SCARO",
+    "slug": "scaro",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/scaro-logo.png",
+    "scheme": "scaro",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.scaro.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#0F172A",
+        "foregroundImage": "./assets/images/scaro-logo.png"
+      },
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.scaro.app"
+    },
+    "web": {
+      "output": "single",
+      "favicon": "./assets/images/scaro-logo.png"
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-logo.png",
+          "imageWidth": 280,
+          "resizeMode": "contain",
+          "backgroundColor": "#0F172A",
+          "dark": {
+            "backgroundColor": "#0F172A"
+          }
+        }
+      ],
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "reactCompiler": true
+    }
+  }
+}

@@ -1,0 +1,359 @@
+@import "tailwindcss";
+
+:root {
+  /* Light mode: #F7F8F7 background, #78B6A1 primary, #363D49 text */
+  --background: 120 5.3% 97.1%; /* #F7F8F7 */
+  --foreground: 218 13% 26%; /* #363D49 - dark text */
+  --card: 0 0% 100%; /* #FFFFFF - white cards */
+  --card-foreground: 218 13% 26%; /* #363D49 */
+  --popover: 0 0% 100%;
+  --popover-foreground: 218 13% 26%;
+  --primary: 157 33% 60%; /* #78B6A1 - green */
+  --primary-foreground: 0 0% 100%; /* white text on green */
+  --secondary: 157 25% 85%; /* light green */
+  --secondary-foreground: 218 13% 26%;
+  --muted: 120 10% 96%; /* very light gray */
+  --muted-foreground: 218 13% 46%; /* muted dark text */
+  --accent: 157 30% 75%;
+  --accent-foreground: 218 13% 26%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 0 0% 90%; /* light gray borders */
+  --input: 0 0% 95%; /* light input bg */
+  --ring: 157 33% 60%; /* green focus ring */
+  --radius: 0.75rem;
+
+  /* Risk colors */
+  --risk-low: 142 76% 36%;
+  --risk-medium: 45 93% 47%;
+  --risk-high: 27 96% 61%;
+  --risk-critical: 0 84% 60%;
+}
+
+.dark {
+  --background: 222.2 84% 4.9%;
+  --foreground: 210 40% 98%;
+  --card: 222.2 84% 4.9%;
+  --card-foreground: 210 40% 98%;
+  --popover: 222.2 84% 4.9%;
+  --popover-foreground: 210 40% 98%;
+  --primary: 217.2 91.2% 59.8%;
+  --primary-foreground: 222.2 47.4% 11.2%;
+  --secondary: 217.2 32.6% 17.5%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217.2 32.6% 17.5%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 217.2 32.6% 17.5%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 217.2 32.6% 17.5%;
+  --input: 217.2 32.6% 17.5%;
+  --ring: 224.3 76.3% 48%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.5);
+}
+
+/* Utility classes */
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    hsl(var(--primary) / 0.1) 0%,
+    hsl(var(--secondary)) 100%
+  );
+}
+
+.glass {
+  background: hsl(var(--card) / 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid hsl(var(--border) / 0.5);
+}
+
+/* Risk level colors */
+.risk-low {
+  color: hsl(var(--risk-low));
+}
+.risk-medium {
+  color: hsl(var(--risk-medium));
+}
+.risk-high {
+  color: hsl(var(--risk-high));
+}
+.risk-critical {
+  color: hsl(var(--risk-critical));
+}
+
+.bg-risk-low {
+  background-color: hsl(var(--risk-low));
+}
+.bg-risk-medium {
+  background-color: hsl(var(--risk-medium));
+}
+.bg-risk-high {
+  background-color: hsl(var(--risk-high));
+}
+.bg-risk-critical {
+  background-color: hsl(var(--risk-critical));
+}
+
+/* ========================================
+   SMOOTH TRANSITIONS & ANIMATIONS
+   ======================================== */
+
+/* Base transition for all interactive elements */
+button,
+a,
+select,
+input,
+textarea,
+[role="button"] {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.15);
+}
+
+/* Button press effect */
+button:active,
+[role="button"]:active {
+  transform: scale(0.98);
+}
+
+/* Smooth focus states */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+  transition: outline-offset 0.2s ease;
+}
+
+/* Icon animations */
+.icon-hover {
+  transition: transform 0.2s ease;
+}
+
+.icon-hover:hover {
+  transform: scale(1.1);
+}
+
+/* Spin animation for refresh icons */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 1s linear infinite;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Slide in from left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.3s ease-out forwards;
+}
+
+/* Scale up animation */
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-scale-up {
+  animation: scaleUp 0.2s ease-out forwards;
+}
+
+/* Pulse glow for status indicators */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 currentColor;
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 10px 3px currentColor;
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 25%,
+    hsl(var(--muted-foreground) / 0.1) 50%,
+    hsl(var(--muted)) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* Smooth border transitions */
+.border-transition {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Interactive list items */
+.list-item-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.list-item-hover:hover {
+  background-color: hsl(var(--accent));
+  transform: translateX(4px);
+}
+
+/* Nav link active indicator animation */
+@keyframes navIndicator {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* Stagger animation for lists */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+
+/* Smooth color transitions for status changes */
+.status-transition {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Chart container entrance */
+.chart-enter {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Number counter animation helper */
+.number-animate {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Ripple effect base */
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: hsl(var(--foreground) / 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.ripple:active::after {
+  width: 200%;
+  height: 200%;
+}
+
+/* Dark mode select dropdown styling */
+.dark select,
+.dark select option {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+}
+
+.dark select option:hover,
+.dark select option:checked {
+  background-color: hsl(var(--accent));
+}

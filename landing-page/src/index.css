@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Warm, calm color palette */
+    --background: 40 33% 98%;
+    --foreground: 220 15% 25%;
+
+    --card: 40 25% 96%;
+    --card-foreground: 220 15% 25%;
+
+    --popover: 40 33% 98%;
+    --popover-foreground: 220 15% 25%;
+
+    /* Sage green primary - lighter */
+    --primary: 160 30% 55%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Soft warm beige */
+    --secondary: 35 30% 92%;
+    --secondary-foreground: 220 15% 30%;
+
+    --muted: 40 20% 94%;
+    --muted-foreground: 220 10% 50%;
+
+    /* Dusty rose accent */
+    --accent: 350 25% 88%;
+    --accent-foreground: 350 20% 35%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 90%;
+    --input: 40 20% 90%;
+    --ring: 160 25% 45%;
+
+    --radius: 1rem;
+
+    /* Custom tokens */
+    --hero-gradient: linear-gradient(
+      180deg,
+      hsl(40 33% 98%) 0%,
+      hsl(160 20% 96%) 100%
+    );
+    --card-shadow: 0 4px 24px -4px hsl(220 15% 25% / 0.06);
+    --card-shadow-hover: 0 8px 32px -8px hsl(220 15% 25% / 0.1);
+    --button-shadow: 0 2px 12px -2px hsl(160 25% 45% / 0.25);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: "Outfit", system-ui, sans-serif;
+    font-weight: 400;
+  }
+}
+
+@layer components {
+  .hero-section {
+    background: var(--hero-gradient);
+  }
+
+  .calm-card {
+    @apply bg-card rounded-2xl p-8;
+    box-shadow: var(--card-shadow);
+    transition:
+      box-shadow 0.4s ease,
+      transform 0.4s ease;
+  }
+
+  .calm-card:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-2px);
+  }
+}
+
+@layer utilities {
+  /* Gentle animations */
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes gentle-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  .animate-gentle-float {
+    animation: gentle-float 6s ease-in-out infinite;
+  }
+
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+}
