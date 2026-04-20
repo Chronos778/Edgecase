@@ -29,10 +29,14 @@ const mockChartData = [
 
 export function RiskChart() {
     return (
-        <div className="rounded-xl border bg-card p-5 transition-shadow duration-300 hover:shadow-md animate-fade-in">
+        <div className="panel-surface rounded-xl p-5 card-hover animate-fade-in">
             <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold">Risk Trend Analysis</h2>
-                <select className="text-sm px-3 py-1.5 rounded-lg bg-muted border-none outline-none cursor-pointer transition-all duration-200 hover:bg-accent focus:ring-2 focus:ring-primary/50">
+                <h2 className="font-semibold font-heading text-xl">Risk Trend Analysis</h2>
+                <select
+                    title="Select trend time range"
+                    aria-label="Select trend time range"
+                    className="text-sm px-3 py-1.5 rounded-lg bg-muted/60 border border-border/70 outline-none cursor-pointer transition-all duration-200 hover:bg-accent/20 focus:ring-2 focus:ring-primary/50"
+                >
                     <option value="12m">Last 12 Months</option>
                     <option value="6m">Last 6 Months</option>
                     <option value="30d">Last 30 Days</option>
@@ -40,7 +44,7 @@ export function RiskChart() {
                 </select>
             </div>
 
-            <div className="h-[300px]">
+            <div className="h-80">
                 <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={mockChartData}>
                         <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
@@ -57,8 +61,8 @@ export function RiskChart() {
                         />
                         <Tooltip
                             contentStyle={{
-                                backgroundColor: "hsl(var(--card))",
-                                border: "1px solid hsl(var(--border))",
+                                backgroundColor: "hsl(var(--card) / 0.98)",
+                                border: "1px solid hsl(var(--border) / 0.9)",
                                 borderRadius: "0.5rem",
                             }}
                         />

@@ -75,14 +75,14 @@ export function RemindersWidget() {
     };
 
     return (
-        <div className="rounded-xl border bg-card p-5">
+        <div className="panel-surface rounded-xl p-5">
             <div className="flex items-center justify-between mb-4">
-                <h2 className="font-semibold flex items-center gap-2">
+                <h2 className="font-semibold font-heading text-xl flex items-center gap-2">
                     <Bell className="w-5 h-5 text-primary" />
                     Smart Reminders
                 </h2>
                 {reminders.length > 0 && (
-                    <span className="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                    <span className="px-2 py-0.5 rounded-full bg-primary/14 border border-primary/30 text-primary text-xs font-semibold uppercase tracking-[0.08em]">
                         {reminders.length}
                     </span>
                 )}
@@ -95,7 +95,7 @@ export function RemindersWidget() {
             ) : reminders.length === 0 ? (
                 <div className="text-center py-8 text-muted-foreground">
                     <Bell className="w-8 h-8 mx-auto mb-2 opacity-50" />
-                    <p className="text-sm">All clear! No urgent reminders.</p>
+                    <p className="text-sm font-medium">All clear. No urgent reminders.</p>
                 </div>
             ) : (
                 <div className="space-y-3">
@@ -103,19 +103,19 @@ export function RemindersWidget() {
                         <Link
                             key={reminder.id}
                             href={reminder.link}
-                            className={`block p-3 rounded-lg border transition-all hover:shadow-md ${getPriorityColor(reminder.priority)}`}
+                            className={`block p-3 rounded-lg border transition-all hover:translate-x-1 ${getPriorityColor(reminder.priority)}`}
                         >
                             <div className="flex items-start gap-3">
-                                <div className={`p-2 rounded-lg bg-background/50 ${getIconColor(reminder.type, reminder.priority)}`}>
+                                <div className={`p-2 rounded-lg border border-border/50 bg-background/60 ${getIconColor(reminder.type, reminder.priority)}`}>
                                     {getIcon(reminder.type)}
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <p className="font-medium text-sm mb-1">{reminder.title}</p>
+                                    <p className="font-semibold text-sm mb-1">{reminder.title}</p>
                                     <p className="text-xs text-muted-foreground line-clamp-2">
                                         {reminder.message}
                                     </p>
                                 </div>
-                                <ChevronRight className="w-4 h-4 text-muted-foreground flex-shrink-0 mt-1" />
+                                <ChevronRight className="w-4 h-4 text-muted-foreground shrink-0 mt-1" />
                             </div>
                         </Link>
                     ))}

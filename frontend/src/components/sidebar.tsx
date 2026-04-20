@@ -6,19 +6,20 @@ import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import Image from "next/image";
 import {
-  LayoutDashboard,
-  Network,
   AlertTriangle,
-  CloudRain,
   Ban,
-  Settings,
-  Moon,
-  Sun,
-  Radar,
-  MessageSquare,
-  Database,
   BarChart3,
+  ChevronRight,
+  CloudRain,
+  Database,
   Info,
+  LayoutDashboard,
+  MessageSquare,
+  Moon,
+  Network,
+  Radar,
+  Settings,
+  Sun,
   Zap,
 } from "lucide-react";
 
@@ -42,40 +43,41 @@ export function Sidebar() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Prevent hydration mismatch
   useEffect(() => {
     setMounted(true);
   }, []);
 
   return (
-    <aside className="w-64 h-screen bg-background border-r border-border flex flex-col print:hidden">
-      {/* Logo */}
-      <div className="p-6 border-b border-border">
-        <div className="flex items-center gap-3">
+    <aside className="w-72 h-screen panel-surface border-r border-border/80 flex flex-col print:hidden">
+      <div className="p-5 border-b border-border/70">
+        <div className="flex items-center gap-3 mb-4">
           <Image
             src="/scaro-logo.png"
             alt="SCARO Logo"
-            width={48}
-            height={48}
+            width={44}
+            height={44}
             className="object-contain"
             unoptimized
           />
-          <div>
-            <h1 className="text-lg text-foreground" style={{ fontWeight: 800 }}>
+          <div className="space-y-0.5">
+            <h1 className="text-2xl leading-none text-foreground font-heading font-bold tracking-wide">
               SCARO
             </h1>
-            <p
-              className="text-xs text-muted-foreground"
-              style={{ fontWeight: 600 }}
-            >
-              Supply Chain Risk
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground font-semibold">
+              Risk Command
             </p>
           </div>
         </div>
+
+        <div className="rounded-lg border border-primary/35 bg-primary/10 px-3 py-2">
+          <p className="text-[10px] uppercase tracking-[0.14em] text-primary/80 font-semibold">
+            Monitoring
+          </p>
+          <p className="text-sm font-semibold text-foreground">Global supply disruptions</p>
+        </div>
       </div>
 
-      {/* Navigation */}
-      <nav className="flex-1 p-4 space-y-1">
+      <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto">
         {navItems.map((item, index) => {
           const isActive = pathname === item.href;
           const Icon = item.icon;
@@ -84,35 +86,29 @@ export function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`group flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 ease-out animate-fade-in stagger-${index + 1} ${isActive
-                ? "bg-[#6AAF98]/10 shadow-sm"
-                : "text-muted-foreground hover:text-foreground hover:bg-accent hover:translate-x-1"
-                }`}
-              style={isActive ? { color: "#6AAF98" } : undefined}
+              aria-current={isActive ? "page" : undefined}
+              className={`group flex items-center gap-3 px-3 py-2.5 rounded-lg border transition-all duration-200 ease-out animate-slide-in-left stagger-${index + 1} ${
+                isActive
+                  ? "border-primary/40 bg-primary/15 text-primary shadow-sm"
+                  : "border-transparent text-muted-foreground hover:text-foreground hover:border-border hover:bg-muted/60"
+              }`}
             >
               <Icon
-                className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-110" : "group-hover:scale-110"}`}
+                className={`w-5 h-5 transition-transform duration-200 ${
+                  isActive ? "scale-110" : "group-hover:scale-105"
+                }`}
               />
-              <span className="text-sm" style={{ fontWeight: 600 }}>
-                {item.label}
-              </span>
-              {isActive && (
-                <span
-                  className="ml-auto w-1.5 h-1.5 rounded-full animate-pulse"
-                  style={{ backgroundColor: "#6AAF98" }}
-                />
-              )}
+              <span className="text-sm font-semibold tracking-[0.01em]">{item.label}</span>
+              {isActive && <ChevronRight className="ml-auto w-4 h-4" />}
             </Link>
           );
         })}
       </nav>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-border space-y-2">
-        {/* Theme Toggle - only render after mount to prevent hydration mismatch */}
+      <div className="p-4 border-t border-border/70 space-y-2 bg-muted/35">
         <button
           onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="group flex items-center gap-3 px-3 py-2.5 rounded-lg w-full text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-200 hover:translate-x-1"
+          className="group flex items-center gap-3 px-3 py-2.5 rounded-lg w-full border border-transparent text-muted-foreground hover:text-foreground hover:border-border hover:bg-background transition-all duration-200"
         >
           {mounted ? (
             theme === "dark" ? (
@@ -123,7 +119,7 @@ export function Sidebar() {
           ) : (
             <Sun className="w-5 h-5" />
           )}
-          <span className="text-sm" style={{ fontWeight: 600 }}>
+          <span className="text-sm font-semibold">
             {mounted
               ? theme === "dark"
                 ? "Light Mode"
@@ -132,15 +128,12 @@ export function Sidebar() {
           </span>
         </button>
 
-        {/* Settings */}
         <Link
           href="/dashboard/settings"
-          className="group flex items-center gap-3 px-3 py-2.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-accent transition-all duration-200 hover:translate-x-1"
+          className="group flex items-center gap-3 px-3 py-2.5 rounded-lg border border-transparent text-muted-foreground hover:text-foreground hover:border-border hover:bg-background transition-all duration-200"
         >
           <Settings className="w-5 h-5 transition-transform duration-300 group-hover:rotate-90" />
-          <span className="text-sm" style={{ fontWeight: 600 }}>
-            Settings
-          </span>
+          <span className="text-sm font-semibold">Settings</span>
         </Link>
       </div>
     </aside>

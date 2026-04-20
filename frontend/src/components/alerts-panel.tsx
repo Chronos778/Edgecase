@@ -29,7 +29,7 @@ export function AlertsPanel({ events: providedEvents }: AlertsPanelProps) {
     }, []);
 
     // Fetch events from backend if not provided
-    const { data } = useQuery({
+    const { data } = useQuery<Event[]>({
         queryKey: ["recent-events"],
         queryFn: async () => {
             const response = await fetch(`${API_BASE}/api/dashboard/summary`);
@@ -41,7 +41,7 @@ export function AlertsPanel({ events: providedEvents }: AlertsPanelProps) {
         refetchInterval: 30000, // Refresh every 30s
     });
 
-    const events = providedEvents || data || [];
+    const events: Event[] = providedEvents ?? data ?? [];
 
     const getSeverityColor = (severity: string) => {
         switch (severity) {
@@ -57,10 +57,10 @@ export function AlertsPanel({ events: providedEvents }: AlertsPanelProps) {
     };
 
     return (
-        <div className="rounded-xl border bg-card p-5 h-full transition-shadow duration-300 hover:shadow-md">
+        <div className="panel-surface rounded-xl p-5 h-full card-hover">
             <div className="flex items-center gap-2 mb-4">
                 <AlertTriangle className="w-5 h-5 text-amber-500 animate-pulse" />
-                <h2 className="font-semibold">Recent Events</h2>
+                <h2 className="font-semibold font-heading text-xl">Recent Events</h2>
             </div>
 
             <div className="space-y-3">
@@ -70,7 +70,7 @@ export function AlertsPanel({ events: providedEvents }: AlertsPanelProps) {
                     events.slice(0, 5).map((event, index) => (
                         <div
                             key={event.id}
-                            className={`p-3 rounded-lg bg-muted/50 hover:bg-muted transition-all duration-200 cursor-pointer hover:translate-x-1 hover:shadow-sm animate-fade-in stagger-${Math.min(index + 1, 8)}`}
+                            className={`p-3 rounded-lg border border-border/70 bg-muted/35 hover:bg-muted/60 transition-all duration-200 cursor-pointer hover:translate-x-1 animate-fade-in stagger-${Math.min(index + 1, 8)}`}
                         >
                             <div className="flex items-start gap-3">
                                 <span
@@ -83,11 +83,11 @@ export function AlertsPanel({ events: providedEvents }: AlertsPanelProps) {
                                         {event.title}
                                     </p>
                                     <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
-                                        <span className="px-1.5 py-0.5 rounded bg-muted transition-colors duration-200 hover:bg-accent">
+                                        <span className="px-1.5 py-0.5 rounded bg-background/80 border border-border/60 transition-colors duration-200 hover:bg-accent/20">
                                             {event.category}
                                         </span>
                                         {event.country && (
-                                            <span className="px-1.5 py-0.5 rounded bg-muted transition-colors duration-200 hover:bg-accent">
+                                            <span className="px-1.5 py-0.5 rounded bg-background/80 border border-border/60 transition-colors duration-200 hover:bg-accent/20">
                                                 {event.country}
                                             </span>
                                         )}
@@ -106,7 +106,7 @@ export function AlertsPanel({ events: providedEvents }: AlertsPanelProps) {
             {events.length > 0 && (
                 <Link
                     href="/dashboard/events"
-                    className="group w-full mt-4 py-2 text-sm text-primary hover:underline transition-all duration-200 flex items-center justify-center gap-1"
+                    className="group w-full mt-4 py-2 text-sm text-primary transition-all duration-200 flex items-center justify-center gap-1 font-semibold uppercase tracking-[0.08em]"
                 >
                     View All Events
                     <span className="transition-transform duration-200 group-hover:translate-x-1">→</span>
