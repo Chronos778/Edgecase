@@ -2,17 +2,17 @@
 
 A production-ready AI-powered platform for real-time supply chain risk monitoring, disruption detection, and predictive analytics. SCARO combines advanced data scraping, machine learning, and interactive visualization to help organizations build more resilient supply chains.
 
-## 🚀 Features
+## Features
 
 ### Core Capabilities
-- **🗺️ Global Trade Route Overview**: Interactive map visualization with disruption markers and India domestic mode
-- **📊 Real-time Dashboard**: Live monitoring of supply chain risks, events, and statistics
-- **🕸️ 3D Supply Chain Graph**: Interactive network visualization with node selection and connection highlighting
-- **🤖 AI-Powered Analysis**: Gemini and Ollama integration for intelligent event processing
-- **📰 Automated Data Collection**: 15+ RSS feeds and 6+ news sources with continuous polling
-- **⚠️ Risk Assessment**: Multi-factor risk scoring with overconfidence detection
-- **🌐 RAG Query System**: Ask questions about your supply chain data using natural language
-- **📈 Dataset Analysis**: Comprehensive analytics on scraped data with visualizations
+- **Global Trade Route Overview**: Interactive map visualization with disruption markers and India domestic mode
+- **Real-time Dashboard**: Live monitoring of supply chain risks, events, and statistics
+- **3D Supply Chain Graph**: Interactive network visualization with node selection and connection highlighting
+- **AI-Powered Analysis**: Gemini and Ollama integration for intelligent event processing
+- **Automated Data Collection**: 15+ RSS feeds and 6+ news sources with continuous polling
+- **Risk Assessment**: Multi-factor risk scoring with overconfidence detection
+- **RAG Query System**: Ask questions about your supply chain data using natural language
+- **Dataset Analysis**: Comprehensive analytics on scraped data with visualizations
 
 ### Data Sources
 - **News Feeds**: Supply Chain Dive, FreightWaves, Reuters, Bloomberg, The Loadstar, Supply Chain Lens
@@ -21,12 +21,12 @@ A production-ready AI-powered platform for real-time supply chain risk monitorin
 - **Custom Scraping**: Auto-crawler for discovering new articles from seed sites
 
 ### India-Specific Features
-- **🇮🇳 Domestic Mode**: Focus on India's supply chain ecosystem
+- **Domestic Mode**: Focus on India's supply chain ecosystem
 - **Major Ports**: Mumbai, Chennai, Kolkata, Visakhapatnam, Kandla, Cochin
 - **Manufacturing Hubs**: Bangalore, Pune, Ahmedabad, Delhi NCR, Hyderabad
 - **India Trade Policies**: Specialized tracking of India-specific restrictions
 
-## 📦 Tech Stack
+## Tech Stack
 
 ### Backend
 - **Framework**: FastAPI (Python 3.10+)
@@ -52,7 +52,7 @@ A production-ready AI-powered platform for real-time supply chain risk monitorin
   - Custom SVG maps - Geographic visualization
 - **UI Components**: Lucide React icons, custom components
 
-## 🛠️ Quick Start
+## Quick Start
 
 ### Prerequisites
 - Docker & Docker Compose
@@ -109,7 +109,7 @@ ollama pull qwen2.5:3b
 ollama serve
 ```
 
-## 📊 Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -138,7 +138,7 @@ ollama serve
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-## 🎯 Key Pages
+## Key Pages
 
 | Page | Route | Description |
 |------|-------|-------------|
@@ -153,7 +153,7 @@ ollama serve
 | Trade Restrictions | `/dashboard/restrictions` | Sanctions and export controls |
 | About | `/dashboard/about` | Project information |
 
-## 🔧 Configuration
+## Configuration
 
 ### Environment Variables
 
@@ -194,7 +194,7 @@ The system automatically monitors 15 RSS feeds including:
 - Semiconductor Engineering
 - And more...
 
-## 📈 Usage
+## Usage
 
 ### Starting Data Collection
 
@@ -211,7 +211,7 @@ The system automatically monitors 15 RSS feeds including:
 3. AI processes using RAG over scraped content
 4. Get intelligent answers with source citations
 
-## 🚀 Development
+## Development
 
 ### Backend Development
 
@@ -237,13 +237,13 @@ npm run lint
 npm run build
 ```
 
-## 📝 API Documentation
+## API Documentation
 
 Once the backend is running, visit:
 - Swagger UI: http://localhost:8000/docs
 - ReDoc: http://localhost:8000/redoc
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Supply chain news sources for data
 - Open-source community for amazing tools
