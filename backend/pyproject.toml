@@ -26,6 +26,7 @@ dependencies = [
     "playwright>=1.41.0",
     "newspaper3k>=0.2.8",
     "duckduckgo-search>=4.1.1",
+    "undetected-chromedriver",
     
     # NLP & AI
     "spacy>=3.7.2",
