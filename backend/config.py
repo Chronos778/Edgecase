@@ -24,6 +24,15 @@ class Settings(BaseSettings):
     app_version: str = "0.1.0"
     debug: bool = False
     
+    # Render / Environment Vars
+    database_url: Optional[str] = None
+    redis_url: Optional[str] = None
+    gemini_api_key: Optional[str] = None
+    qdrant_api_key: Optional[str] = None
+    secret_key: Optional[str] = None
+    environment: str = "development"
+    feed_poll_interval: int = 5
+    
     # PostgreSQL
     postgres_host: str = "localhost"
     postgres_port: int = 5432
@@ -33,10 +42,19 @@ class Settings(BaseSettings):
     
     @property
     def postgres_url(self) -> str:
+        if self.database_url:
+            url = self.database_url
+            if url.startswith("postgres://"):
+                url = url.replace("postgres://", "postgresql+asyncpg://", 1)
+            elif url.startswith("postgresql://"):
+                url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+            return url
         return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
     
     @property
     def postgres_url_sync(self) -> str:
+        if self.database_url:
+            return self.database_url
         return f"postgresql://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
     
     # Neo4j
@@ -50,6 +68,9 @@ class Settings(BaseSettings):
     
     @property
     def qdrant_url(self) -> str:
+        # If QDRANT_HOST contains http or https, assume it's a full URL (like from cloud)
+        if self.qdrant_host.startswith("http"):
+            return self.qdrant_host
         return f"http://{self.qdrant_host}:{self.qdrant_port}"
     
     # Ollama

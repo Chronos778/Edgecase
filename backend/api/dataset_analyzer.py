@@ -134,9 +134,11 @@ def forecast_series(series: pd.Series, horizon: int) -> tuple:
 # GEMINI COLUMN MAPPER
 # ============================================================================
 
+from config import settings
+
 MODEL_NAME = "gemini-2.5-flash"
 API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_API_KEY = "AIzaSyAqiR9t5Tp9vw-sX8JnGoEiJfaOQjtnpZc"  # From api.py
+GEMINI_API_KEY = settings.gemini_api_key or "AIzaSyAqiR9t5Tp9vw-sX8JnGoEiJfaOQjtnpZc"  # From api.py
 
 
 def map_columns_with_gemini(columns: List[str], sample_rows: Dict[str, List[Any]]) -> Dict[str, Any]:
