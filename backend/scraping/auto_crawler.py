@@ -316,12 +316,12 @@ class AutoCrawler:
         return articles
     
     async def _process_article(self, article: CrawledArticle) -> bool:
-        """Process a crawled article through Gemini and store to all DBs."""
+        """Process a crawled article through NVIDIA and store to all DBs."""
         try:
             from data.processor import data_processor
             from data.scheduler import scheduler, ProcessedItem as SchedulerItem
             
-            # Process with Gemini extraction
+            # Process with NVIDIA extraction
             processed = await data_processor.process_item(
                 title=article.title,
                 content=article.content,

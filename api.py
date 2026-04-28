@@ -84,15 +84,16 @@ def risk_level(score):
 
 
 # ============================================================================
-# GEMINI MAPPER
+# NVIDIA MAPPER
 # ============================================================================
 
-MODEL_NAME = "gemini-2.5-flash"
-API_BASE = "https://generativelanguage.googleapis.com/v1beta"
+from openai import OpenAI
 
+MODEL_NAME = "meta/llama-4-maverick-17b-128e-instruct"
+API_BASE = "https://integrate.api.nvidia.com/v1"
 
-def map_columns_with_gemini(columns: List[str], sample_rows: Dict[str, List[Any]]):
-    """Call Gemini via REST (no google client SDK) and return parsed JSON."""
+def map_columns_with_nvidia(columns: List[str], sample_rows: Dict[str, List[Any]]):
+    """Call NVIDIA API via openai client and return parsed JSON."""
 
     prompt = f"""
 You are a supply chain risk analyst.
@@ -115,36 +116,29 @@ Columns and samples:
 {json.dumps(sample_rows, indent=2)}
 """
 
-    api_key = "AIzaSyAqiR9t5Tp9vw-sX8JnGoEiJfaOQjtnpZc"
-    if not api_key:
-        raise RuntimeError("Missing GOOGLE_API_KEY environment variable for Gemini.")
+    api_key = os.getenv("NVIDIA_API_KEY", "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")
 
-    url = f"{API_BASE}/models/{MODEL_NAME}:generateContent?key={api_key}"
-    payload = {"contents": [{"parts": [{"text": prompt}]}]}
-
-    try:
-        resp = requests.post(url, json=payload, timeout=30)
-    except requests.RequestException as exc:
-        raise RuntimeError(f"Gemini request failed: {exc}") from exc
-
-    if not resp.ok:
-        raise RuntimeError(f"Gemini HTTP error {resp.status_code}: {resp.text[:200]}")
-
-    data = resp.json()
-
-    if "error" in data:
-        message = data.get("error", {}).get("message", "Unknown error")
-        raise RuntimeError(f"Gemini API error: {message}")
+    client = OpenAI(
+        api_key=api_key,
+        base_url=API_BASE
+    )
 
     try:
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
-    except (KeyError, IndexError, TypeError) as exc:
-        raise RuntimeError(f"Unexpected Gemini response shape: {data}") from exc
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.2,
+            max_tokens=1024,
+        )
+    except Exception as exc:
+        raise RuntimeError(f"NVIDIA API request failed: {exc}") from exc
+
+    text = response.choices[0].message.content
 
     parsed = _extract_json(text)
     if parsed is None:
         snippet = (text or "")[:200].replace("\n", " ")
-        raise RuntimeError(f"Gemini response was not valid JSON: '{snippet}'")
+        raise RuntimeError(f"NVIDIA response was not valid JSON: '{snippet}'")
     return parsed
 
 
@@ -189,14 +183,14 @@ app.add_middleware(
 async def analyze_supply_chain(file: UploadFile):
     df = pd.read_csv(file.file)
 
-    # Take small samples for Gemini
+    # Take small samples for NVIDIA
     sample_rows = {
         col: df[col].dropna().head(5).tolist()
         for col in df.columns
     }
 
-    # Gemini semantic mapping
-    column_map = map_columns_with_gemini(
+    # NVIDIA semantic mapping
+    column_map = map_columns_with_nvidia(
         columns=df.columns.tolist(),
         sample_rows=sample_rows
     )
@@ -207,7 +201,7 @@ async def analyze_supply_chain(file: UploadFile):
 
     for col, meta in column_map.items():
         if not meta.get("forecastable", False):
-            skipped[col] = "Marked non-forecastable by Gemini"
+            skipped[col] = "Marked non-forecastable by NVIDIA"
             continue
 
         series = df[col].dropna()

@@ -195,7 +195,7 @@ async def get_available_sources():
 async def interpret_item(item_id: str):
     """Get AI interpretation for an item."""
     from data.scheduler import scheduler
-    from ai.ollama_client import ollama_client
+    from ai.nvidia_client import nvidia_client
     
     # Find item
     item = None
@@ -224,7 +224,7 @@ Provide:
 4. Recommended actions
 5. Expected timeline of impact"""
 
-        interpretation = await ollama_client.generate(prompt, temperature=0.4)
+        interpretation = await nvidia_client.generate(prompt, temperature=0.4)
         
         return {
             "item_id": item_id,

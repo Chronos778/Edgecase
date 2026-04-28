@@ -117,7 +117,7 @@ async def analyze_ripple_effect(
     commodity: Optional[str] = None,
 ):
     """Analyze ripple effect of a potential disruption using Gemini AI."""
-    from agents.llm_router import analyze_with_gemini
+    from agents.llm_router import analyze_with_nvidia
     import json
     import re
     
@@ -146,7 +146,7 @@ async def analyze_ripple_effect(
     """
     
     try:
-        response_text = await analyze_with_gemini(prompt)
+        response_text = await analyze_with_nvidia(prompt)
         
         # Robustly extract JSON
         cleaned_text = response_text.strip()

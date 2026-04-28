@@ -3,7 +3,7 @@ Dataset Analyzer API Endpoints
 
 Upload and analyze CSV datasets for supply chain risk using:
 - Time-series forecasting (Chronos-2 if available, fallback to statistical)
-- AI-driven column classification (Gemini)
+- AI-driven column classification (NVIDIA)
 - Risk metrics: stability, fragility, overconfidence
 """
 
@@ -131,18 +131,11 @@ def forecast_series(series: pd.Series, horizon: int) -> tuple:
 
 
 # ============================================================================
-# GEMINI COLUMN MAPPER
-# ============================================================================
+# NVIDIA COLUMN MAPPER
+from agents.llm_router import analyze_with_nvidia
 
-from config import settings
-
-MODEL_NAME = "gemini-2.5-flash"
-API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_API_KEY = settings.gemini_api_key or "AIzaSyAqiR9t5Tp9vw-sX8JnGoEiJfaOQjtnpZc"  # From api.py
-
-
-def map_columns_with_gemini(columns: List[str], sample_rows: Dict[str, List[Any]]) -> Dict[str, Any]:
-    """Call Gemini to classify columns for supply chain risk analysis."""
+async def map_columns_with_nvidia(columns: List[str], sample_rows: Dict[str, List[Any]]) -> Dict[str, Any]:
+    """Call NVIDIA to classify columns for supply chain risk analysis."""
     prompt = f"""
 You are a supply chain risk analyst.
 
@@ -164,19 +157,8 @@ Columns and samples:
 {json.dumps(sample_rows, indent=2)}
 """
 
-    url = f"{API_BASE}/models/{MODEL_NAME}:generateContent?key={GEMINI_API_KEY}"
-    payload = {"contents": [{"parts": [{"text": prompt}]}]}
-
     try:
-        resp = requests.post(url, json=payload, timeout=30)
-        if not resp.ok:
-            return _fallback_column_classification(columns, sample_rows)
-        
-        data = resp.json()
-        if "error" in data:
-            return _fallback_column_classification(columns, sample_rows)
-        
-        text = data["candidates"][0]["content"]["parts"][0]["text"]
+        text = await analyze_with_nvidia(prompt)
         parsed = _extract_json(text)
         
         if parsed is None:
@@ -188,7 +170,7 @@ Columns and samples:
 
 
 def _fallback_column_classification(columns: List[str], sample_rows: Dict[str, List[Any]]) -> Dict[str, Any]:
-    """Fallback classification when Gemini is unavailable."""
+    """Fallback classification when NVIDIA is unavailable."""
     result = {}
     for col in columns:
         samples = sample_rows.get(col, [])
@@ -213,7 +195,7 @@ def _fallback_column_classification(columns: List[str], sample_rows: Dict[str, L
 
 
 def _extract_json(text: str) -> Optional[Dict[str, Any]]:
-    """Extract JSON from Gemini response."""
+    """Extract JSON from AI response."""
     if not text:
         return None
     
@@ -266,7 +248,7 @@ class AnalysisResponse(BaseModel):
 async def analyze_uploaded_dataset(file: UploadFile = File(...)):
     """
     Upload a CSV dataset and analyze it for supply chain risk.
-    Uses Chronos-2 for forecasting (if available) and Gemini for column classification.
+    Uses Chronos-2 for forecasting (if available) and NVIDIA for column classification.
     """
     if not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="Only CSV files are supported")
@@ -279,14 +261,14 @@ async def analyze_uploaded_dataset(file: UploadFile = File(...)):
     # Generate job ID
     job_id = hashlib.md5(f"{file.filename}{datetime.now().isoformat()}".encode()).hexdigest()[:12]
     
-    # Sample rows for Gemini
+    # Sample rows for NVIDIA
     sample_rows = {
         col: df[col].dropna().head(5).tolist()
         for col in df.columns
     }
     
     # Classify columns
-    column_map = map_columns_with_gemini(df.columns.tolist(), sample_rows)
+    column_map = await map_columns_with_nvidia(df.columns.tolist(), sample_rows)
     
     results = {}
     skipped = {}

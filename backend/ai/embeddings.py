@@ -1,13 +1,13 @@
 """
 Vector Embeddings
 
-Generate and store embeddings for RAG using Ollama.
+Generate and store embeddings for RAG using NVIDIA API.
 """
 
 from typing import Optional
 import hashlib
 
-import ollama
+from openai import OpenAI
 from qdrant_client.models import PointStruct
 
 from config import settings
@@ -18,18 +18,22 @@ class EmbeddingsService:
     """
     Embeddings service for RAG.
     
-    Uses Ollama for embedding generation and Qdrant for storage.
+    Uses NVIDIA API for embedding generation and Qdrant for storage.
     """
     
     CHUNK_SIZE = 500  # Characters per chunk
     CHUNK_OVERLAP = 50
     
     def __init__(self):
-        self.model = settings.ollama_embedding_model
+        self.model = settings.nvidia_embedding_model
+        self.client = OpenAI(
+            api_key=settings.nvidia_api_key,
+            base_url=settings.nvidia_base_url,
+        )
     
     def generate_embedding(self, text: str) -> list[float]:
         """
-        Generate embedding for text using Ollama.
+        Generate embedding for text using NVIDIA API.
         
         Args:
             text: Input text
@@ -38,11 +42,12 @@ class EmbeddingsService:
             Embedding vector
         """
         try:
-            response = ollama.embeddings(
+            response = self.client.embeddings.create(
                 model=self.model,
-                prompt=text,
+                input=text,
+                encoding_format="float"
             )
-            return response.get("embedding", [])
+            return response.data[0].embedding
         except Exception as e:
             print(f"Embedding error: {e}")
             return []

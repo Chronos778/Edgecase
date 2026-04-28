@@ -27,7 +27,6 @@ class Settings(BaseSettings):
     # Render / Environment Vars
     database_url: Optional[str] = None
     redis_url: Optional[str] = None
-    gemini_api_key: Optional[str] = None
     qdrant_api_key: Optional[str] = None
     secret_key: Optional[str] = None
     environment: str = "development"
@@ -79,10 +78,11 @@ class Settings(BaseSettings):
             return self.qdrant_host
         return f"http://{self.qdrant_host}:{self.qdrant_port}"
     
-    # Ollama
-    ollama_base_url: str = "http://localhost:11434"
-    ollama_model: str = "qwen3"
-    ollama_embedding_model: str = "nomic-embed-text"
+    # NVIDIA API
+    nvidia_api_key: Optional[str] = None
+    nvidia_base_url: str = "https://integrate.api.nvidia.com/v1"
+    nvidia_model: str = "meta/llama-4-maverick-17b-128e-instruct"
+    nvidia_embedding_model: str = "nvidia/nv-embedqa-e5-v5"
     
     # Weather API (Open-Meteo - free)
     open_meteo_base_url: str = "https://api.open-meteo.com/v1"
