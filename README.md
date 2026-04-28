@@ -8,7 +8,7 @@ A production-ready AI-powered platform for real-time supply chain risk monitorin
 - **Global Trade Route Overview**: Interactive map visualization with disruption markers and India domestic mode
 - **Real-time Dashboard**: Live monitoring of supply chain risks, events, and statistics
 - **3D Supply Chain Graph**: Interactive network visualization with node selection and connection highlighting
-- **AI-Powered Analysis**: Gemini and Ollama integration for intelligent event processing
+- **AI-Powered Analysis**: NVIDIA NIM integration for high-performance intelligent event processing
 - **Automated Data Collection**: 15+ RSS feeds and 6+ news sources with continuous polling
 - **Risk Assessment**: Multi-factor risk scoring with overconfidence detection
 - **RAG Query System**: Ask questions about your supply chain data using natural language
@@ -35,8 +35,8 @@ A production-ready AI-powered platform for real-time supply chain risk monitorin
   - Neo4j - Graph database for supply chain networks
   - Qdrant - Vector database for RAG
 - **AI/ML**:
-  - Google Gemini - Advanced AI analysis
-  - Ollama (Qwen3) - Local LLM inference
+  - NVIDIA NIM - High-performance AI inference
+  - Llama 3.1 405b / 4-Maverick 17b models
 - **Scraping**: 
   - BeautifulSoup4 - HTML parsing
   - aiohttp - Async HTTP requests
@@ -58,7 +58,7 @@ A production-ready AI-powered platform for real-time supply chain risk monitorin
 - Docker & Docker Compose
 - Python 3.10+
 - Node.js 18+
-- Ollama (for local LLM)
+- NVIDIA API Key (for LLM services)
 
 ### 1. Clone and Setup Environment
 
@@ -143,9 +143,9 @@ Ready to deploy? See the complete deployment guide for Vercel + Neon + Render:
 │  │   Scraping   │  │ Risk Analysis│  │   AI/RAG     │          │
 │  │   Engine     │  │   Engine     │  │   Engine     │          │
 │  └──────────────┘  └──────────────┘  └──────────────┘          │
-│  • RSS Feeds (15+) • Risk Scoring   • Gemini API               │
-│  • Auto Crawler    • Overconfidence • Ollama LLM               │
-│  • News Scrapers   • Graph Analysis • Vector Search            │
+│  • RSS Feeds (15+) • Risk Scoring   • NVIDIA NIM API          │
+│  • Auto Crawler    • Overconfidence • Vector Search           │
+│  • News Scrapers   • Graph Analysis                           │
 └────────────────────────┬────────────────────────────────────────┘
                          │
 ┌─────────────────────────────────────────────────────────────────┐
@@ -191,12 +191,8 @@ NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
 NEO4J_PASSWORD=edgecase123
 
-# Ollama
-OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=qwen2.5:3b
-
-# Google Gemini (optional)
-GOOGLE_API_KEY=your_api_key_here
+# NVIDIA API (required)
+NVIDIA_API_KEY=your_nvidia_api_key_here
 
 # OpenWeatherMap (optional)
 OPENWEATHER_API_KEY=your_api_key_here
@@ -266,7 +262,7 @@ Once the backend is running, visit:
 
 - Supply chain news sources for data
 - Open-source community for amazing tools
-- Google Gemini and Ollama for AI capabilities
+- NVIDIA NIM for high-performance AI capabilities
 
 ---
 

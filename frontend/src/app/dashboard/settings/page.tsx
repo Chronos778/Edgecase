@@ -17,7 +17,7 @@ export default function SettingsPage() {
         { name: "Neo4j", status: "checking", url: "localhost:7687" },
         { name: "Qdrant", status: "checking", url: "localhost:6333" },
         { name: "Redis", status: "checking", url: "localhost:6379" },
-        { name: "Ollama", status: "checking", url: "localhost:11434" },
+        { name: "NVIDIA NIM", status: "checking", url: "integrate.api.nvidia.com" },
     ];
 
     const databases = [
@@ -188,7 +188,7 @@ export default function SettingsPage() {
                             <div className="flex items-center gap-3">
                                 {service.name === "Backend API" ? (
                                     <Server className="w-5 h-5 text-muted-foreground" />
-                                ) : service.name === "Ollama" ? (
+                                ) : service.name === "NVIDIA NIM" ? (
                                     <Globe className="w-5 h-5 text-muted-foreground" />
                                 ) : (
                                     <Database className="w-5 h-5 text-muted-foreground" />

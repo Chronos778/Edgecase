@@ -10,7 +10,7 @@ from datetime import datetime
 
 from risk.stability import StabilityMetrics
 from risk.fragility import FragilityMetrics
-from ai.ollama_client import ollama_client
+from ai.nvidia_client import nvidia_client
 
 
 @dataclass
@@ -210,7 +210,7 @@ class OverconfidenceDetector:
         # Optional AI enhancement
         if use_ai and is_overconfident:
             try:
-                ai_result = await ollama_client.detect_overconfidence(
+                ai_result = await nvidia_client.detect_overconfidence(
                     stability.stability_score,
                     fragility.fragility_score,
                     stability.days_since_incident,

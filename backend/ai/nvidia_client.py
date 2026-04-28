@@ -1,22 +1,22 @@
 """
-Ollama Client
+NVIDIA Client
 
-Integration with Ollama for LLM inference using Qwen3.
+Integration with NVIDIA NIM API using OpenAI SDK for LLM inference.
 """
 
 import asyncio
 from typing import Optional, AsyncGenerator
 
-import ollama
+from openai import AsyncOpenAI
 
 from config import settings
 
 
-class OllamaClient:
+class NvidiaClient:
     """
-    Ollama client for LLM inference.
+    NVIDIA API client for LLM inference.
     
-    Uses Qwen3 model for supply chain analysis.
+    Uses meta/llama-4-maverick-17b-128e-instruct for supply chain analysis.
     """
     
     SYSTEM_PROMPT = """You are Edgecase, an AI assistant specialized in supply chain risk analysis.
@@ -31,8 +31,11 @@ When discussing risks, use clear severity levels: Low, Medium, High, Critical.
 Always cite specific events, countries, or commodities when relevant."""
     
     def __init__(self):
-        self.model = settings.ollama_model
-        self.base_url = settings.ollama_base_url
+        self.model = settings.nvidia_model
+        self.client = AsyncOpenAI(
+            api_key=settings.nvidia_api_key,
+            base_url=settings.nvidia_base_url,
+        )
     
     async def generate(
         self,
@@ -54,18 +57,18 @@ Always cite specific events, countries, or commodities when relevant."""
             Generated text
         """
         try:
-            response = ollama.generate(
+            response = await self.client.chat.completions.create(
                 model=self.model,
-                prompt=prompt,
-                system=system or self.SYSTEM_PROMPT,
-                options={
-                    "temperature": temperature,
-                    "num_predict": max_tokens,
-                },
+                messages=[
+                    {"role": "system", "content": system or self.SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=temperature,
+                max_tokens=max_tokens,
             )
-            return response.get("response", "")
+            return response.choices[0].message.content or ""
         except Exception as e:
-            print(f"Ollama error: {e}")
+            print(f"NVIDIA API error: {e}")
             return f"Error generating response: {e}"
     
     async def generate_stream(
@@ -81,17 +84,19 @@ Always cite specific events, countries, or commodities when relevant."""
             Text chunks
         """
         try:
-            stream = ollama.generate(
+            stream = await self.client.chat.completions.create(
                 model=self.model,
-                prompt=prompt,
-                system=system or self.SYSTEM_PROMPT,
+                messages=[
+                    {"role": "system", "content": system or self.SYSTEM_PROMPT},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature=temperature,
                 stream=True,
-                options={"temperature": temperature},
             )
             
-            for chunk in stream:
-                if "response" in chunk:
-                    yield chunk["response"]
+            async for chunk in stream:
+                if chunk.choices and chunk.choices[0].delta.content:
+                    yield chunk.choices[0].delta.content
         except Exception as e:
             yield f"Error: {e}"
     
@@ -111,20 +116,19 @@ Always cite specific events, countries, or commodities when relevant."""
             Assistant response
         """
         try:
-            # Add system message
             full_messages = [
                 {"role": "system", "content": self.SYSTEM_PROMPT},
                 *messages,
             ]
             
-            response = ollama.chat(
+            response = await self.client.chat.completions.create(
                 model=self.model,
                 messages=full_messages,
-                options={"temperature": temperature},
+                temperature=temperature,
             )
-            return response.get("message", {}).get("content", "")
+            return response.choices[0].message.content or ""
         except Exception as e:
-            print(f"Ollama chat error: {e}")
+            print(f"NVIDIA chat error: {e}")
             return f"Error: {e}"
     
     async def analyze_risk(self, event_description: str) -> dict:
@@ -233,4 +237,4 @@ High stability + High fragility = Overconfidence Risk"""
 
 
 # Global instance
-ollama_client = OllamaClient()
+nvidia_client = NvidiaClient()

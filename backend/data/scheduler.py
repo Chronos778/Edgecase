@@ -229,7 +229,7 @@ class ContinuousScheduler:
     
     async def _analyze_with_ai(self, title: str, content: str) -> dict:
         """
-        Use Ollama/Qwen3 to extract structured information from content.
+        Use NVIDIA NIM to extract structured information from content.
         
         Returns dict with:
         - category: str (trade_restriction, commodity_shortage, logistics, etc.)
@@ -242,7 +242,7 @@ class ContinuousScheduler:
         - risk_score: float (0.0 to 1.0)
         """
         try:
-            from ai.ollama_client import ollama_client
+            from ai.nvidia_client import nvidia_client
             
             prompt = f"""Analyze this supply chain news article and extract structured information.
 
@@ -261,7 +261,7 @@ Respond ONLY with a JSON object (no markdown, no explanation):
     "risk_score": <float from 0.0 to 1.0 based on severity and impact>
 }}"""
 
-            response = await ollama_client.generate(
+            response = await nvidia_client.generate(
                 prompt,
                 system="You are a supply chain analyst. Extract structured information from news articles. Return ONLY valid JSON, no other text.",
                 temperature=0.1,

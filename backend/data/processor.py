@@ -2,7 +2,7 @@
 Data Processing Pipeline
 
 Process scraped data, extract entities, classify events, and store in databases.
-Uses Gemini for intelligent entity extraction and risk scoring.
+Uses NVIDIA for intelligent entity extraction and risk scoring.
 """
 
 import asyncio
@@ -126,7 +126,7 @@ class DataProcessor:
         use_ai: bool = True,
     ) -> ProcessedItem:
         """
-        Process a single scraped item using Gemini for extraction.
+        Process a single scraped item using NVIDIA for extraction.
         
         Args:
             title: Item title
@@ -134,7 +134,7 @@ class DataProcessor:
             url: Source URL
             source: Source type (search_engines, news, etc.)
             source_name: Specific source (duckduckgo, reuters)
-            use_ai: Whether to use Gemini for intelligent extraction
+            use_ai: Whether to use NVIDIA for intelligent extraction
         """
         item_id = self.generate_id(url, content)
         full_text = f"{title} {content}"
@@ -148,16 +148,16 @@ class DataProcessor:
         risk_score = 0.3
         overconfidence_score = 0.5
         
-        # Use Gemini for intelligent extraction
+        # Use NVIDIA for intelligent extraction
         if use_ai and len(content) > 100:
             try:
-                from ai.gemini_extractor import gemini_extractor
+                from ai.nvidia_extractor import nvidia_extractor
                 
-                # Extract entities with Gemini
-                entities = await gemini_extractor.extract_entities(content, title)
+                # Extract entities with NVIDIA
+                entities = await nvidia_extractor.extract_entities(content, title)
                 
                 if entities:
-                    # Override with Gemini-extracted data
+                    # Override with NVIDIA-extracted data
                     commodities = [c["name"] for c in entities.commodities]
                     for country in entities.countries:
                         if country["name"] not in countries:
@@ -169,8 +169,8 @@ class DataProcessor:
                         category = evt.get("type", category)
                         severity = evt.get("severity", severity)
                     
-                    # Score risk with Gemini
-                    risk_assessment = await gemini_extractor.score_risk(content, entities)
+                    # Score risk with NVIDIA
+                    risk_assessment = await nvidia_extractor.score_risk(content, entities)
                     if risk_assessment:
                         risk_score = risk_assessment.risk_score
                         overconfidence_score = risk_assessment.overconfidence_score
@@ -178,17 +178,17 @@ class DataProcessor:
                         commodities = risk_assessment.affected_supply_chains or commodities
                     
                     # Generate and store graph nodes
-                    nodes = await gemini_extractor.generate_graph_nodes(entities, url)
-                    links = gemini_extractor.generate_graph_links(entities, nodes)
+                    nodes = await nvidia_extractor.generate_graph_nodes(entities, url)
+                    links = nvidia_extractor.generate_graph_links(entities, nodes)
                     
                     # Store nodes to Neo4j
                     await self._store_extracted_graph(nodes, links)
                     logger.info(f"Stored {len(nodes)} nodes and {len(links)} links to Neo4j")
                     
             except Exception as e:
-                logger.warning(f"Gemini extraction failed, using fallback: {e}")
+                logger.warning(f"NVIDIA extraction failed, using fallback: {e}")
         
-        # Calculate risk score from severity if not set by Gemini
+        # Calculate risk score from severity if not set by NVIDIA
         if risk_score == 0.3:
             severity_scores = {"critical": 0.9, "high": 0.7, "medium": 0.4, "low": 0.2}
             risk_score = severity_scores.get(severity, 0.3)
@@ -212,7 +212,7 @@ class DataProcessor:
         )
     
     async def _store_extracted_graph(self, nodes: list[dict], links: list[dict]):
-        """Store Gemini-extracted nodes and links to Neo4j."""
+        """Store NVIDIA-extracted nodes and links to Neo4j."""
         try:
             for node in nodes:
                 if node["type"] == "vendor":

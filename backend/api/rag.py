@@ -2,7 +2,7 @@
 RAG API Endpoints
 
 Retrieval-Augmented Generation for natural language queries.
-Uses Qdrant for context retrieval and Ollama for response generation.
+Uses Qdrant for context retrieval and NVIDIA NIM for response generation.
 """
 
 import logging
@@ -110,7 +110,7 @@ async def _get_qdrant_context(query: str, limit: int = 5) -> tuple[str, list[Sou
 
 
 async def _generate_rag_response(query: str, context: str) -> str:
-    """Generate response using Ollama with RAG context."""
+    """Generate response using NVIDIA NIM with RAG context."""
     try:
         from agents.llm_router import chat_with_rag
         
@@ -201,7 +201,7 @@ async def chat_with_context(request: ChatRequest):
 
 @router.post("/query", response_model=QueryResponse)
 async def query_rag(request: QueryRequest):
-    """Query the RAG system with natural language using Qdrant + Ollama."""
+    """Query the RAG system with natural language using Qdrant + NVIDIA NIM."""
     start = time.time()
     
     # Step 1: Retrieve context from Qdrant

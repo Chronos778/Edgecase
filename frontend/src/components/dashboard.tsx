@@ -72,7 +72,7 @@ function SystemStatusBar() {
   const [services, setServices] = useState<ServiceStatus[]>([
     { name: "Backend", status: "checking", icon: Server },
     { name: "Database", status: "checking", icon: Database },
-    { name: "Ollama", status: "checking", icon: Brain },
+    { name: "NVIDIA NIM", status: "checking", icon: Brain },
   ]);
 
   useEffect(() => {
@@ -104,14 +104,15 @@ function SystemStatusBar() {
       }
 
       try {
-        const res = await fetch("http://localhost:11434/api/tags", { method: "GET" });
+        // We check the backend's health, which now verifies NVIDIA connectivity
+        const res = await fetch(`${API_BASE}/health`, { method: "GET" });
         newServices.push({
-          name: "Ollama",
+          name: "NVIDIA NIM",
           status: res.ok ? "online" : "offline",
           icon: Brain,
         });
       } catch {
-        newServices.push({ name: "Ollama", status: "offline", icon: Brain });
+        newServices.push({ name: "NVIDIA NIM", status: "offline", icon: Brain });
       }
 
       setServices(newServices);

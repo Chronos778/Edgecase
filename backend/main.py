@@ -8,9 +8,6 @@ import warnings
 import logging
 
 # Suppress noisy warnings
-warnings.filterwarnings("ignore", category=FutureWarning, module="google.api_core")
-warnings.filterwarnings("ignore", category=FutureWarning, module="google.generativeai")
-# Suppress BeautifulSoup 'GuessedAtParserWarning' if it appears
 warnings.filterwarnings("ignore", module="bs4")
 
 
@@ -34,11 +31,7 @@ async def lifespan(app: FastAPI):
     else:
         print(f"📊 PostgreSQL: {settings.postgres_host}:{settings.postgres_port}")
     print(f"🔗 Neo4j: {settings.neo4j_uri}")
-    
-    if settings.gemini_api_key and settings.gemini_api_key != "your_gemini_api_key_here":
-        print(f"✨ Gemini API: Enabled")
-    else:
-        print(f"🧠 Ollama: {settings.ollama_base_url} (model: {settings.ollama_model})")
+    print(f"🧠 NVIDIA API: Enabled (model: {settings.nvidia_model})")
     
     # Initialize database connections
     from db.postgres import init_db

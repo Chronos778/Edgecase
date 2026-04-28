@@ -618,7 +618,7 @@ async def get_executive_report_data(
     
     # Prepare context for AI
     import json
-    from agents.llm_router import analyze_with_gemini
+    from agents.llm_router import analyze_with_nvidia
     
     # Gather top risks for context - Prioritize by Recency
     
@@ -671,7 +671,7 @@ async def get_executive_report_data(
     """
     
     try:
-        response_text = await analyze_with_gemini(prompt)
+        response_text = await analyze_with_nvidia(prompt)
         
         # Clean JSON
         import re

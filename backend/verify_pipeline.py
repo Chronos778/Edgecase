@@ -21,31 +21,23 @@ async def verify_pipeline():
     
     results = {}
     
-    # 1. Check Gemini API
-    print("\n1. Checking Gemini API...")
+    # 1. Check NVIDIA API
+    print("\n1. Checking NVIDIA API...")
     try:
-        from ai.gemini_extractor import gemini_extractor
-        if gemini_extractor.client:
-            print("   ✓ Gemini API configured")
-            results["gemini"] = True
+        from ai.nvidia_client import nvidia_client
+        if nvidia_client.client:
+            print("   ✓ NVIDIA API client initialized")
+            results["nvidia"] = True
         else:
-            print("   ✗ Gemini API not configured")
-            results["gemini"] = False
-    except Exception as e:
-        print(f"   ✗ Gemini error: {e}")
-        results["gemini"] = False
-    
-    # 2. Check Ollama
-    print("\n2. Checking Ollama...")
-    try:
+            print("   ✗ NVIDIA API client NOT initialized")
+            results["nvidia"] = False
+        
         from agents.llm_router import LLMRouter
         router = LLMRouter()
-        print(f"   - Has Gemini: {router.has_gemini}")
-        print(f"   - Has Ollama: {router.has_ollama}")
-        results["ollama"] = router.has_ollama
+        print(f"   - LLM Router initialized: {router.has_nvidia}")
     except Exception as e:
-        print(f"   ✗ Ollama error: {e}")
-        results["ollama"] = False
+        print(f"   ✗ NVIDIA error: {e}")
+        results["nvidia"] = False
     
     # 3. Check Neo4j connection
     print("\n3. Checking Neo4j...")
@@ -98,7 +90,7 @@ async def verify_pipeline():
         results["scheduler"] = False
     
     # 7. Test Data Processor
-    print("\n7. Testing Data Processor with Gemini extraction...")
+    print("\n7. Testing Data Processor with NVIDIA extraction...")
     try:
         from data.processor import data_processor
         

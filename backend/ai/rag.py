@@ -8,7 +8,7 @@ import time
 from typing import Optional, AsyncGenerator
 from dataclasses import dataclass
 
-from ai.ollama_client import ollama_client
+from ai.nvidia_client import nvidia_client
 from ai.embeddings import embeddings_service
 
 
@@ -31,7 +31,7 @@ class RAGService:
     
     def __init__(self):
         self.embeddings = embeddings_service
-        self.llm = ollama_client
+        self.llm = nvidia_client
     
     async def query(
         self,
