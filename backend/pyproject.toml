@@ -23,6 +23,7 @@ dependencies = [
     "aiohttp>=3.9.1",
     "beautifulsoup4>=4.12.3",
     "lxml>=5.1.0",
+    "lxml_html_clean",
     "playwright>=1.41.0",
     "newspaper3k>=0.2.8",
     "duckduckgo-search>=4.1.1",
