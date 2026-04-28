@@ -14,7 +14,11 @@ import logging
 
 import httpx
 from bs4 import BeautifulSoup
-from ddgs import DDGS
+try:
+    from ddgs import DDGS
+except ImportError:
+    # Backward compatibility with older duckduckgo-search package layout.
+    from duckduckgo_search import DDGS
 
 from config import settings
 from scraping.anti_block import AntiBlocker
