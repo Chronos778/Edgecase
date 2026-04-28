@@ -19,7 +19,7 @@ const CTASection = () => {
           Ready to Strengthen Your Supply Chain?
         </h2>
         <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
-          Join forward-thinking organizations using SCARO to detect risks before
+          Join forward-thinking organizations using Edgecase to detect risks before
           they become crises.
         </p>
 

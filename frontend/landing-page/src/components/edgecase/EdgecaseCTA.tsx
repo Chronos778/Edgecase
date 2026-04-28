@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Play } from "lucide-react";
 
-const ScaroCTA = () => {
+const EdgecaseCTA = () => {
   return (
     <section className="py-24 px-6 bg-gradient-to-br from-primary/10 via-background to-primary/5 relative overflow-hidden">
       {/* Decorative elements */}
@@ -15,7 +15,7 @@ const ScaroCTA = () => {
               Don't Let Overconfidence Blind Your Supply Chain
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Start monitoring hidden risks today. SCARO provides the
+              Start monitoring hidden risks today. Edgecase provides the
               intelligence you need to protect your supply chain before
               disruptions happen.
             </p>
@@ -58,4 +58,4 @@ const ScaroCTA = () => {
   );
 };
 
-export default ScaroCTA;
+export default EdgecaseCTA;

@@ -20,7 +20,7 @@ const HeroSection = () => {
 
         {/* Sub-headline */}
         <p className="text-xl md:text-2xl text-muted-foreground font-normal leading-relaxed max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up animation-delay-200">
-          SCARO - Your intelligent companion for supply chain clarity. Detect
+          Edgecase - Your intelligent companion for supply chain clarity. Detect
           risks before they become crises.
         </p>
 

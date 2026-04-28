@@ -78,7 +78,7 @@ const scaroFeatures = [
   },
 ];
 
-export function ScaroGridFeatures() {
+export function EdgecaseGridFeatures() {
   return (
     <section id="features" className="py-16 md:py-32 bg-primary/5">
       <div className="mx-auto w-full max-w-6xl space-y-8 px-6">

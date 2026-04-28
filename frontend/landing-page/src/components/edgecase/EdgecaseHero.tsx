@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, TrendingUp, Shield, Database } from "lucide-react";
 
-const ScaroHero = () => {
+const EdgecaseHero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden bg-gradient-to-br from-background via-primary/5 to-background">
       {/* Animated background grid */}
@@ -29,7 +29,7 @@ const ScaroHero = () => {
             {/* Main heading */}
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
-                SCARO
+                Edgecase
               </h1>
               <p className="text-2xl md:text-3xl font-semibold text-primary">
                 Supply Chain Analyser for Risk and Overconfidence
@@ -231,4 +231,4 @@ const ScaroHero = () => {
   );
 };
 
-export default ScaroHero;
+export default EdgecaseHero;

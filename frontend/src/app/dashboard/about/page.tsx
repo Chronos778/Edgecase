@@ -11,7 +11,7 @@ export default function AboutPage() {
                 <div className="mx-auto w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center">
                     <Info className="w-8 h-8 text-primary" />
                 </div>
-                <h1 className="text-4xl font-bold tracking-tight">About SCARO</h1>
+                <h1 className="text-4xl font-bold tracking-tight">About Edgecase</h1>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                     Supply Chain Analyser for Risk and Overconfidence
                 </p>
@@ -90,7 +90,7 @@ export default function AboutPage() {
             </div>
 
             <div className="text-center text-sm text-muted-foreground pt-8 border-t">
-                <p>&copy; {new Date().getFullYear()} SCARO Project. All rights reserved.</p>
+                <p>&copy; {new Date().getFullYear()} Edgecase Project. All rights reserved.</p>
             </div>
         </div>
     );

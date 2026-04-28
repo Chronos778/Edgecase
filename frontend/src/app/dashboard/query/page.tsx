@@ -145,7 +145,7 @@ export default function QueryPage() {
                 <div>
                     <h1 className="text-2xl font-bold flex items-center gap-2">
                         <Sparkles className="w-6 h-6" />
-                        Ask SCARO AI
+                        Ask Edgecase AI
                     </h1>
                     <p className="text-muted-foreground">
                         Ask questions about your supply chain data in natural language
@@ -212,7 +212,7 @@ export default function QueryPage() {
                                         <div className="flex items-center justify-between mb-3">
                                             <div className="flex items-center gap-2">
                                                 <Sparkles className="w-5 h-5 text-primary" />
-                                                <span className="font-medium">SCARO AI</span>
+                                                <span className="font-medium">Edgecase AI</span>
                                             </div>
                                             <div className="flex items-center gap-2">
                                                 {message.thinking && (

@@ -26,7 +26,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <img
             src="/logo.png"
-            alt="SCARO Logo"
+            alt="Edgecase Logo"
             className="h-20 w-auto object-contain mix-blend-multiply transition-transform hover:scale-105 duration-300"
           />
         </div>
@@ -42,7 +42,7 @@ const Navbar = () => {
             href="#why"
             className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
           >
-            Why SCARO
+            Why Edgecase
           </a>
           <a
             href="#security"

@@ -1,6 +1,6 @@
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
 
-const ScaroFooter = () => {
+const EdgecaseFooter = () => {
   return (
     <footer className="py-12 px-6 border-t border-border bg-card">
       <div className="max-w-7xl mx-auto">
@@ -10,7 +10,7 @@ const ScaroFooter = () => {
             <div className="flex items-center gap-2">
               <img 
                 src="/logo.png" 
-                alt="SCARO Logo" 
+                alt="Edgecase Logo" 
                 className="h-28 w-auto object-contain mix-blend-multiply"
               />
             </div>
@@ -120,7 +120,7 @@ const ScaroFooter = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="text-sm text-muted-foreground">
-            © 2026 SCARO. All rights reserved.
+            © 2026 Edgecase. All rights reserved.
           </div>
 
           <div className="flex items-center gap-4">
@@ -155,4 +155,4 @@ const ScaroFooter = () => {
   );
 };
 
-export default ScaroFooter;
+export default EdgecaseFooter;
