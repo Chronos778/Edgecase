@@ -48,6 +48,12 @@ class Settings(BaseSettings):
                 url = url.replace("postgres://", "postgresql+asyncpg://", 1)
             elif url.startswith("postgresql://"):
                 url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+            
+            # asyncpg doesn't accept sslmode, translate it to ssl
+            url = url.replace("?sslmode=require", "?ssl=require")
+            url = url.replace("&sslmode=require", "&ssl=require")
+            url = url.replace("sslmode=require", "ssl=require")
+            
             return url
         return f"postgresql+asyncpg://{self.postgres_user}:{self.postgres_password}@{self.postgres_host}:{self.postgres_port}/{self.postgres_db}"
     

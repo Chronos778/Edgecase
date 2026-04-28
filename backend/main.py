@@ -29,9 +29,16 @@ async def lifespan(app: FastAPI):
     
     # Startup
     print(f"🚀 Starting {settings.app_name} v{settings.app_version}")
-    print(f"📊 PostgreSQL: {settings.postgres_host}:{settings.postgres_port}")
+    if settings.database_url:
+        print(f"📊 PostgreSQL: [Connected via DATABASE_URL]")
+    else:
+        print(f"📊 PostgreSQL: {settings.postgres_host}:{settings.postgres_port}")
     print(f"🔗 Neo4j: {settings.neo4j_uri}")
-    print(f"🧠 Ollama: {settings.ollama_base_url} (model: {settings.ollama_model})")
+    
+    if settings.gemini_api_key and settings.gemini_api_key != "your_gemini_api_key_here":
+        print(f"✨ Gemini API: Enabled")
+    else:
+        print(f"🧠 Ollama: {settings.ollama_base_url} (model: {settings.ollama_model})")
     
     # Initialize database connections
     from db.postgres import init_db
