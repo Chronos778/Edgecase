@@ -30,7 +30,7 @@ const EdgecaseFooter = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-primary transition-colors">
+                <a href="/dashboard" className="hover:text-primary transition-colors">
                   Dashboard
                 </a>
               </li>

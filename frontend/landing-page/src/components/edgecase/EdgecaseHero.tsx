@@ -81,7 +81,7 @@ const EdgecaseHero = () => {
                 <Database className="w-4 h-4" />
                 Start Analysis
               </Button>
-              <Button variant="outline" size="lg" className="gap-2">
+              <Button variant="outline" size="lg" className="gap-2" onClick={() => window.location.href = '/dashboard'}>
                 <TrendingUp className="w-4 h-4" />
                 View Demo Dashboard
               </Button>

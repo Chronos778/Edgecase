@@ -1,6 +1,6 @@
 "use client";
 
-import { Info, Code, Users, Cpu, ShieldCheck } from "lucide-react";
+import { Info, Code, Cpu, ShieldCheck } from "lucide-react";
 
 export default function AboutPage() {
     return (
@@ -39,53 +39,6 @@ export default function AboutPage() {
                     <p className="text-sm text-muted-foreground">
                         Built with Next.js, Python FastAPI, and vector databases for high-speed retrieval and analysis.
                     </p>
-                </div>
-            </div>
-
-            {/* Team Section */}
-            <div className="bg-gradient-to-br from-primary/5 via-muted/50 to-background rounded-3xl p-8 border text-center space-y-8">
-                <div>
-                    <h2 className="text-2xl font-bold flex items-center justify-center gap-2 mb-2">
-                        <Users className="w-6 h-6" />
-                        Built by Team <span className="text-primary">Localbros:3000</span>
-                    </h2>
-                    <p className="text-muted-foreground">
-                        Developed with passion for the Hackathon.
-                    </p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-3xl mx-auto">
-                    <div className="p-4 bg-background rounded-xl border shadow-sm hover:shadow-md transition-all group">
-                        <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full mx-auto mb-3 flex items-center justify-center text-xl font-bold text-blue-600 dark:text-blue-400 group-hover:scale-110 transition-transform">
-                            DP
-                        </div>
-                        <p className="font-bold">David Porathur</p>
-                        <p className="text-xs text-primary font-medium mt-1">Team Lead</p>
-                    </div>
-
-                    <div className="p-4 bg-background rounded-xl border shadow-sm hover:shadow-md transition-all group">
-                        <div className="w-12 h-12 bg-amber-100 dark:bg-amber-900/30 rounded-full mx-auto mb-3 flex items-center justify-center text-xl font-bold text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
-                            SC
-                        </div>
-                        <p className="font-bold">Swar Churi</p>
-                        <p className="text-xs text-muted-foreground mt-1">Developer</p>
-                    </div>
-
-                    <div className="p-4 bg-background rounded-xl border shadow-sm hover:shadow-md transition-all group">
-                        <div className="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-full mx-auto mb-3 flex items-center justify-center text-xl font-bold text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
-                            SB
-                        </div>
-                        <p className="font-bold">Sai Balkwade</p>
-                        <p className="text-xs text-muted-foreground mt-1">Developer</p>
-                    </div>
-
-                    <div className="p-4 bg-background rounded-xl border shadow-sm hover:shadow-md transition-all group">
-                        <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-full mx-auto mb-3 flex items-center justify-center text-xl font-bold text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">
-                            SG
-                        </div>
-                        <p className="font-bold">Sherwin Gonsalves</p>
-                        <p className="text-xs text-muted-foreground mt-1">Developer</p>
-                    </div>
                 </div>
             </div>
 
