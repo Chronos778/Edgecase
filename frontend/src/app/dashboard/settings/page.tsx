@@ -77,7 +77,7 @@ export default function SettingsPage() {
                     <Server className="w-6 h-6" />
                     Settings
                 </h1>
-                <p className="text-muted-foreground">Configure SCARO preferences</p>
+                <p className="text-muted-foreground">Configure Edgecase preferences</p>
             </div>
 
             {/* Theme */}
@@ -211,12 +211,12 @@ export default function SettingsPage() {
 
             {/* About */}
             <div className="rounded-xl border bg-card p-5">
-                <h2 className="font-semibold mb-4">About SCARO</h2>
+                <h2 className="font-semibold mb-4">About Edgecase</h2>
                 <p className="text-sm text-muted-foreground">
                     Supply Chain Analyser for Risk and Overconfidence
                 </p>
                 <p className="text-xs text-muted-foreground mt-2">
-                    Version 0.1.0 • Built with Next.js, FastAPI, Neo4j, and Qwen3
+                    Version 0.1.0 • Built with Next.js, FastAPI, Neo4j, Qdrant
                 </p>
             </div>
         </div>

@@ -112,7 +112,7 @@ const features = [
   },
 ];
 
-const ScaroFeatures = () => {
+const EdgecaseFeatures = () => {
   return (
     <section className="py-24 px-6 bg-background relative overflow-hidden">
       {/* Background decoration */}
@@ -199,4 +199,4 @@ const ScaroFeatures = () => {
   );
 };
 
-export default ScaroFeatures;
+export default EdgecaseFeatures;

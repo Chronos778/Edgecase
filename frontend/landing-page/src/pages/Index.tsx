@@ -35,11 +35,11 @@ const LazyGlobe = lazy(async () => {
 
 const LazyTimeline = lazy(() => import("@/components/ui/radial-orbital-timeline"));
 
-const appUrl = "http://localhost:3000";
+const appUrl = "/dashboard";
 
 const navLinks = [
   { href: "#features", label: "Features" },
-  { href: "#why", label: "Why SCARO" },
+  { href: "#why", label: "Why Edgecase" },
   { href: "#security", label: "Security" },
 ] as const;
 
@@ -669,10 +669,10 @@ const Index = () => {
       </div>
 
       <header className="command-header reveal reveal-delay-1">
-        <a href="#top" className="brand-mark" aria-label="SCARO home">
-          <img src="/logo.png" alt="SCARO Logo" className="brand-icon" />
+        <a href="#top" className="brand-mark" aria-label="Edgecase home">
+          <img src="/logo.png" alt="Edgecase Logo" className="brand-icon" />
           <span className="brand-copy">
-            <span className="brand-title">SCARO</span>
+            <span className="brand-title">Edgecase</span>
             <span className="brand-subtitle">Risk Command</span>
           </span>
         </a>
@@ -798,7 +798,7 @@ const Index = () => {
             <span>your supply chain.</span>
           </h1>
           <p className="hero-subtitle reveal reveal-delay-4">
-            SCARO is your intelligent companion for supply chain clarity. Detect risks before they become crises.
+            Edgecase is your intelligent companion for supply chain clarity. Detect risks before they become crises.
           </p>
 
           <ul className="hero-metrics reveal reveal-delay-5" aria-label="Live command metrics">
@@ -895,7 +895,7 @@ const Index = () => {
         </aside>
       </section>
 
-      <section className="state-dock" aria-label="SCARO system states">
+      <section className="state-dock" aria-label="Edgecase system states">
         {stateBlocks.map((state, index) => {
           const Icon = state.icon;
           return (
@@ -921,7 +921,7 @@ const Index = () => {
         <section id="why" className="dispatch-section section-why">
           <div className="section-heading">
             <p className="section-kicker">Mission</p>
-            <h2>Why SCARO exists</h2>
+            <h2>Why Edgecase exists</h2>
             <p>
               In supply chains that demand constant attention, we built clarity and confidence through intelligent,
               continuous monitoring.
@@ -1048,7 +1048,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="feature-ledger" aria-label="SCARO capability matrix">
+          <div className="feature-ledger" aria-label="Edgecase capability matrix">
             <div className="feature-ledger-head">
               <span>Module</span>
               <span>What it does</span>
@@ -1091,7 +1091,7 @@ const Index = () => {
           <div className="section-heading">
             <p className="section-kicker">Reliability</p>
             <h2>Built for Supply Chain Teams</h2>
-            <p>Reliability and clarity when stakes are high. Explore the SCARO ecosystem below.</p>
+            <p>Reliability and clarity when stakes are high. Explore the Edgecase ecosystem below.</p>
           </div>
 
           <div className="timeline-shell reveal" ref={timelineRef}>
@@ -1133,7 +1133,7 @@ const Index = () => {
             <p className="section-kicker">Proof</p>
             <h2 id="proof-heading">Trusted in live operations</h2>
             <p>
-              Teams rely on SCARO every hour. Here is concrete proof before you make your decision.
+              Teams rely on Edgecase every hour. Here is concrete proof before you make your decision.
             </p>
           </div>
 
@@ -1158,7 +1158,7 @@ const Index = () => {
         <section id="cta" className="dispatch-section section-cta" aria-labelledby="cta-heading">
           <div className="cta-vault reveal">
             <h2 id="cta-heading">Ready to Strengthen Your Supply Chain?</h2>
-            <p>Join forward-thinking organizations using SCARO to detect risks before they become crises.</p>
+            <p>Join forward-thinking organizations using Edgecase to detect risks before they become crises.</p>
             <div className="cta-actions">
               <a
                 href={appUrl}
@@ -1186,28 +1186,28 @@ const Index = () => {
       </div>
 
       <footer className="command-footer">
-        <a href="#top" className="brand-mark" aria-label="SCARO home">
-          <img src="/logo.png" alt="SCARO Logo" className="brand-icon" />
+        <a href="#top" className="brand-mark" aria-label="Edgecase home">
+          <img src="/logo.png" alt="Edgecase Logo" className="brand-icon" />
           <span className="brand-copy">
-            <span className="brand-title">SCARO</span>
+            <span className="brand-title">Edgecase</span>
             <span className="brand-subtitle">Risk Command</span>
           </span>
         </a>
 
         <nav className="command-footer-links" aria-label="Footer links">
           <a href="https://docs.edgecase.ai" target="_blank" rel="noreferrer">
-            Documentation
+            Docs
           </a>
           <a href="https://www.edgecase.ai/privacy" target="_blank" rel="noreferrer">
-            Privacy Policy
+            Privacy
           </a>
           <a href="https://www.edgecase.ai/terms" target="_blank" rel="noreferrer">
-            Terms of Service
+            Terms
           </a>
-          <a href="mailto:hello@scaro.ai">Contact</a>
+          <a href="mailto:hello@edgecase.ai">Contact</a>
         </nav>
 
-        <p>© 2026 SCARO. All rights reserved.</p>
+        <p>© 2026 Edgecase. All rights reserved.</p>
       </footer>
     </main>
   );

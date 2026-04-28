@@ -52,7 +52,7 @@ export function Sidebar() {
       <div className="p-5 border-b border-border/70">
         <div className="flex items-center gap-3 mb-4">
           <Image
-            src="/edgecase-logo.png"
+            src="/logo.png"
             alt="Edgecase Logo"
             width={44}
             height={44}

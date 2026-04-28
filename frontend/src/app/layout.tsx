@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: "Edgecase - Supply Chain Risk Analyser",
   description: "Supply Chain Analyser for Risk and Overconfidence",
   icons: {
-    icon: "/edgecase-logo.png",
+    icon: "/logo.png",
   },
 };
 

@@ -25,7 +25,7 @@ const WhySection = () => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-            Why SCARO exists
+            Why Edgecase exists
           </h2>
           <p className="text-lg text-muted-foreground font-normal leading-relaxed max-w-2xl mx-auto">
             In supply chains that demand constant attention, we've created

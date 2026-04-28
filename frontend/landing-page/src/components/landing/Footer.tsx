@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex items-center gap-3">
           <img 
             src="/logo.png" 
-            alt="SCARO Logo" 
+            alt="Edgecase Logo" 
             className="h-24 w-auto object-contain mix-blend-multiply"
           />
         </div>
@@ -40,7 +40,7 @@ const Footer = () => {
         </nav>
 
         <p className="text-sm text-muted-foreground">
-          © 2026 SCARO. All rights reserved.
+          © 2026 Edgecase. All rights reserved.
         </p>
       </div>
     </footer>
