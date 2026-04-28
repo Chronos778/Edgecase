@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("verify_agents")
 
 async def main():
-    logger.info("Starting SCARO Agent Verification")
+    logger.info("Starting Edgecase Agent Verification")
     
     # 1. Test Context Ingestion (Mock File)
     mock_context = {

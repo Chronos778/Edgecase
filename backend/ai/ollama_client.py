@@ -19,7 +19,7 @@ class OllamaClient:
     Uses Qwen3 model for supply chain analysis.
     """
     
-    SYSTEM_PROMPT = """You are SCARO, an AI assistant specialized in supply chain risk analysis.
+    SYSTEM_PROMPT = """You are Edgecase, an AI assistant specialized in supply chain risk analysis.
 Your role is to:
 1. Analyze supply chain disruptions and their potential impacts
 2. Identify overconfidence risks when supply chains appear stable but are fragile

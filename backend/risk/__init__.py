@@ -1,1 +1,1 @@
-"""SCARO Risk Analysis Package"""
+"""Edgecase Risk Analysis Package"""

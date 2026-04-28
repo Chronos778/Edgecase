@@ -14,7 +14,7 @@ export function HeaderTitle({ title, showLogo = true }: HeaderTitleProps) {
     <View style={styles.container}>
       {showLogo ? (
         <Image
-          source={require("../../assets/images/scaro-logo.png")}
+          source={require("../../assets/images/edgecase-logo.png")}
           style={styles.logo}
           resizeMode="contain"
         />

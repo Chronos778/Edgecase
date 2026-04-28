@@ -1,5 +1,5 @@
 """
-SCARO Backend Configuration
+Edgecase Backend Configuration
 
 Pydantic settings for environment-based configuration.
 """
@@ -20,16 +20,16 @@ class Settings(BaseSettings):
     )
     
     # Application
-    app_name: str = "SCARO"
+    app_name: str = "Edgecase"
     app_version: str = "0.1.0"
     debug: bool = False
     
     # PostgreSQL
     postgres_host: str = "localhost"
     postgres_port: int = 5432
-    postgres_db: str = "scaro"
-    postgres_user: str = "scaro"
-    postgres_password: str = "scaro_secret"
+    postgres_db: str = "edgecase"
+    postgres_user: str = "edgecase"
+    postgres_password: str = "edgecase_secret"
     
     @property
     def postgres_url(self) -> str:
@@ -42,7 +42,7 @@ class Settings(BaseSettings):
     # Neo4j
     neo4j_uri: str = "bolt://localhost:7687"
     neo4j_user: str = "neo4j"
-    neo4j_password: str = "scaro_secret"
+    neo4j_password: str = "edgecase_secret"
     
     # Qdrant
     qdrant_host: str = "localhost"

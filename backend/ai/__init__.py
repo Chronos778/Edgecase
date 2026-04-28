@@ -1,1 +1,1 @@
-"""SCARO AI Package"""
+"""Edgecase AI Package"""

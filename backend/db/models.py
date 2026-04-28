@@ -1,7 +1,7 @@
 """
 PostgreSQL Database Models
 
-SQLAlchemy models for SCARO data storage.
+SQLAlchemy models for Edgecase data storage.
 """
 
 from datetime import datetime

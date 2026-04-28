@@ -1,4 +1,4 @@
-# SCARO Backend Dependencies
+# Edgecase Backend Dependencies
 # Install with: pip install -r requirements.txt
 
 # Web Framework

@@ -18,10 +18,10 @@ const rajdhani = Rajdhani({
 });
 
 export const metadata: Metadata = {
-  title: "SCARO - Supply Chain Risk Analyser",
+  title: "Edgecase - Supply Chain Risk Analyser",
   description: "Supply Chain Analyser for Risk and Overconfidence",
   icons: {
-    icon: "/scaro-logo.png",
+    icon: "/edgecase-logo.png",
   },
 };
 
@@ -40,15 +40,15 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <QueryProvider>
-            <div className="scaro-shell print:block print:h-auto print:overflow-visible">
-              <div className="scaro-atmosphere" aria-hidden="true">
-                <div className="scaro-atmosphere-grid" />
-                <div className="scaro-atmosphere-orb scaro-atmosphere-orb-a" />
-                <div className="scaro-atmosphere-orb scaro-atmosphere-orb-b" />
+            <div className="edgecase-shell print:block print:h-auto print:overflow-visible">
+              <div className="edgecase-atmosphere" aria-hidden="true">
+                <div className="edgecase-atmosphere-grid" />
+                <div className="edgecase-atmosphere-orb edgecase-atmosphere-orb-a" />
+                <div className="edgecase-atmosphere-orb edgecase-atmosphere-orb-b" />
               </div>
               <Sidebar />
-              <main className="scaro-main print:overflow-visible print:h-auto">
-                <div className="scaro-main-inner">{children}</div>
+              <main className="edgecase-main print:overflow-visible print:h-auto">
+                <div className="edgecase-main-inner">{children}</div>
               </main>
             </div>
           </QueryProvider>

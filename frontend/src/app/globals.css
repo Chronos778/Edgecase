@@ -111,7 +111,7 @@ textarea:focus-visible,
   outline-offset: 2px;
 }
 
-.scaro-shell {
+.edgecase-shell {
   display: flex;
   height: 100vh;
   min-height: 100vh;
@@ -119,14 +119,14 @@ textarea:focus-visible,
   isolation: isolate;
 }
 
-.scaro-atmosphere {
+.edgecase-atmosphere {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -1;
 }
 
-.scaro-atmosphere-grid {
+.edgecase-atmosphere-grid {
   position: absolute;
   inset: 0;
   background-image:
@@ -148,13 +148,13 @@ textarea:focus-visible,
   mask-image: linear-gradient(to bottom, hsl(0 0% 0%), transparent 78%);
 }
 
-.scaro-atmosphere-orb {
+.edgecase-atmosphere-orb {
   position: absolute;
   border-radius: 999px;
   filter: blur(64px);
 }
 
-.scaro-atmosphere-orb-a {
+.edgecase-atmosphere-orb-a {
   width: 24rem;
   height: 24rem;
   left: 10%;
@@ -162,7 +162,7 @@ textarea:focus-visible,
   background: hsl(var(--primary) / 0.22);
 }
 
-.scaro-atmosphere-orb-b {
+.edgecase-atmosphere-orb-b {
   width: 20rem;
   height: 20rem;
   right: 6%;
@@ -170,13 +170,13 @@ textarea:focus-visible,
   background: hsl(var(--secondary) / 0.22);
 }
 
-.scaro-main {
+.edgecase-main {
   flex: 1;
   overflow: auto;
   padding: 1rem;
 }
 
-.scaro-main-inner {
+.edgecase-main-inner {
   min-height: 100%;
   border: 1px solid var(--line-soft);
   background: var(--surface-panel);
@@ -484,7 +484,7 @@ button:active,
 }
 
 @media (max-width: 980px) {
-  .scaro-main {
+  .edgecase-main {
     padding: 0.65rem;
   }
 }

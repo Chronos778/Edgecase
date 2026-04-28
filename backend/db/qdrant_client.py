@@ -18,7 +18,7 @@ class QdrantVectorClient:
     """Qdrant client for vector storage and retrieval."""
     
     _client: Optional[QdrantClient] = None
-    COLLECTION_NAME = "scaro_embeddings"
+    COLLECTION_NAME = "edgecase_embeddings"
     VECTOR_SIZE = 768  # nomic-embed-text size
     
     @classmethod

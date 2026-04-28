@@ -16,7 +16,7 @@ load_dotenv()
 
 async def verify_pipeline():
     print("=" * 60)
-    print("SCARO Pipeline Verification")
+    print("Edgecase Pipeline Verification")
     print("=" * 60)
     
     results = {}

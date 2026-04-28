@@ -1,1 +1,1 @@
-"""SCARO Database Package"""
+"""Edgecase Database Package"""

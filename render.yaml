@@ -1,0 +1,35 @@
+# Render deployment configuration
+# Used for one-click deployment from GitHub
+
+services:
+  - type: web
+    name: edgecase-workers
+    env: python
+    buildCommand: pip install -r backend/requirements.txt
+    startCommand: python -m backend.worker_main
+    plan: starter
+    
+    # Environment variables (set in Render dashboard)
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: NEO4J_URI
+        sync: false
+      - key: NEO4J_PASSWORD
+        sync: false
+      - key: QDRANT_HOST
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: REDIS_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: OLLAMA_BASE_URL
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: DEBUG
+        value: "false"
+      - key: FEED_POLL_INTERVAL
+        value: "5"

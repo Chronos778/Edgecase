@@ -109,7 +109,7 @@ class LLMRouter(BaseAgent):
         """
         self.logger.info("→ Ollama (RAG chat)")
         
-        rag_prompt = f"""You are SCARO, a supply chain intelligence assistant.
+        rag_prompt = f"""You are Edgecase, a supply chain intelligence assistant.
 Use the following context to answer the user's question.
 
 CONTEXT:

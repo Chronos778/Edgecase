@@ -1,1 +1,1 @@
-"""SCARO Scraping Package"""
+"""Edgecase Scraping Package"""

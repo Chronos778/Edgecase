@@ -87,7 +87,7 @@ class SocialMonitor:
             self.reddit_client = asyncpraw.Reddit(
                 client_id=getattr(settings, 'reddit_client_id', 'script'),
                 client_secret=getattr(settings, 'reddit_client_secret', ''),
-                user_agent="SCARO/1.0 (Supply Chain Intelligence)",
+                user_agent="Edgecase/1.0 (Supply Chain Intelligence)",
                 check_for_async=False,
             )
             return True

@@ -1,1 +1,1 @@
-"""SCARO Data Processing Package"""
+"""Edgecase Data Processing Package"""

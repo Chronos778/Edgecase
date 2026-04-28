@@ -1,1 +1,1 @@
-"""SCARO API Package"""
+"""Edgecase API Package"""

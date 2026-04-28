@@ -1,6 +1,6 @@
-# SCARO - Supply Chain Analyser for Risk and Overconfidence
+# Edgecase - Supply Chain Analyser for Risk and Overconfidence
 
-A production-ready AI-powered platform for real-time supply chain risk monitoring, disruption detection, and predictive analytics. SCARO combines advanced data scraping, machine learning, and interactive visualization to help organizations build more resilient supply chains.
+A production-ready AI-powered platform for real-time supply chain risk monitoring, disruption detection, and predictive analytics. Edgecase combines advanced data scraping, machine learning, and interactive visualization to help organizations build more resilient supply chains.
 
 ## Features
 
@@ -64,7 +64,7 @@ A production-ready AI-powered platform for real-time supply chain risk monitorin
 
 ```bash
 git clone <repository-url>
-cd SCARO
+cd Edgecase
 cp .env.example .env
 # Edit .env with your configuration
 ```
@@ -108,6 +108,25 @@ Frontend runs on: http://localhost:3000
 ollama pull qwen2.5:3b
 ollama serve
 ```
+
+## Production Deployment
+
+Ready to deploy? See the complete deployment guide for Vercel + Neon + Render:
+
+- 📖 **[DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)** — Step-by-step production setup (Vercel frontend + Neon DB + Render workers)
+- ✅ **[DEPLOYMENT_CHECKLIST.md](./DEPLOYMENT_CHECKLIST.md)** — Pre-deployment checklist and quick reference
+
+### Quick Deploy Summary
+
+| Component | Hosting | Setup |
+|-----------|---------|-------|
+| Frontend (Next.js) | Vercel | Push to GitHub, auto-deploy |
+| Database (Postgres) | Neon | Free tier, $0-10/month |
+| Workers (Scrapers/Feeds) | Render | $7/month starter plan |
+| Vector DB (Qdrant) | Qdrant Cloud | Free tier (2GB), $20+/month |
+| Graph DB (Neo4j) | Neo4j Aura | Free tier, $15+/month |
+
+**Total estimated cost:** $0-30/month (free tier) to $80+/month (production)
 
 ## Architecture
 
@@ -163,14 +182,14 @@ Create `.env` in the backend directory:
 # Database
 POSTGRES_HOST=localhost
 POSTGRES_PORT=5432
-POSTGRES_DB=scaro
-POSTGRES_USER=scaro
-POSTGRES_PASSWORD=scaro123
+POSTGRES_DB=edgecase
+POSTGRES_USER=edgecase
+POSTGRES_PASSWORD=edgecase123
 
 # Neo4j
 NEO4J_URI=bolt://localhost:7687
 NEO4J_USER=neo4j
-NEO4J_PASSWORD=scaro123
+NEO4J_PASSWORD=edgecase123
 
 # Ollama
 OLLAMA_BASE_URL=http://localhost:11434

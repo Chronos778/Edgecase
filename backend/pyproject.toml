@@ -1,7 +1,7 @@
 [project]
-name = "scaro-backend"
+name = "edgecase-backend"
 version = "0.1.0"
-description = "SCARO - Supply Chain Analyser for Risk and Overconfidence"
+description = "Edgecase - Supply Chain Analyser for Risk and Overconfidence"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [

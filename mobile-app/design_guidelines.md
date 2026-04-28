@@ -1,4 +1,4 @@
-# SCARO - Supply Chain Risk Intelligence App
+# Edgecase - Supply Chain Risk Intelligence App
 ## Design Guidelines
 
 ## 1. Brand Identity
@@ -160,7 +160,7 @@
 
 ## 4. Color Palette
 
-**SCARO Brand Colors** (derived from logo):
+**Edgecase Brand Colors** (derived from logo):
 - Primary: #6FBFAB (Teal/Mint - main brand color from logo)
 - Primary Light: #8DD4C4
 - Primary Dark: #5AA593

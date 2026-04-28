@@ -1195,13 +1195,13 @@ const Index = () => {
         </a>
 
         <nav className="command-footer-links" aria-label="Footer links">
-          <a href="https://docs.scaro.ai" target="_blank" rel="noreferrer">
+          <a href="https://docs.edgecase.ai" target="_blank" rel="noreferrer">
             Documentation
           </a>
-          <a href="https://www.scaro.ai/privacy" target="_blank" rel="noreferrer">
+          <a href="https://www.edgecase.ai/privacy" target="_blank" rel="noreferrer">
             Privacy Policy
           </a>
-          <a href="https://www.scaro.ai/terms" target="_blank" rel="noreferrer">
+          <a href="https://www.edgecase.ai/terms" target="_blank" rel="noreferrer">
             Terms of Service
           </a>
           <a href="mailto:hello@scaro.ai">Contact</a>

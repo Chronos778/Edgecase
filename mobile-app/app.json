@@ -1,29 +1,29 @@
 {
   "expo": {
-    "name": "SCARO",
-    "slug": "scaro",
+    "name": "Edgecase",
+    "slug": "edgecase",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/scaro-logo.png",
-    "scheme": "scaro",
+    "icon": "./assets/images/edgecase-logo.png",
+    "scheme": "edgecase",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.scaro.app"
+      "bundleIdentifier": "com.edgecase.app"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#0F172A",
-        "foregroundImage": "./assets/images/scaro-logo.png"
+        "foregroundImage": "./assets/images/edgecase-logo.png"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
-      "package": "com.scaro.app"
+      "package": "com.edgecase.app"
     },
     "web": {
       "output": "single",
-      "favicon": "./assets/images/scaro-logo.png"
+      "favicon": "./assets/images/edgecase-logo.png"
     },
     "plugins": [
       [

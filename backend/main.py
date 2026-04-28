@@ -1,5 +1,5 @@
 """
-SCARO Backend - FastAPI Application
+Edgecase Backend - FastAPI Application
 
 Supply Chain Analyser for Risk and Overconfidence
 """
@@ -89,7 +89,7 @@ async def health_check():
 
 @app.get("/")
 async def root():
-    return {"message": "Welcome to SCARO API"}
+    return {"message": "Welcome to Edgecase API"}
 
 
 # Register API routers

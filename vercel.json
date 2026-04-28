@@ -1,0 +1,44 @@
+{
+  "version": 2,
+  "projectSettings": {
+    "rootDirectory": "frontend"
+  },
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/.next",
+  "framework": "nextjs",
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "QDRANT_HOST": "@qdrant_host",
+    "QDRANT_API_KEY": "@qdrant_api_key",
+    "NEO4J_URI": "@neo4j_uri",
+    "NEO4J_PASSWORD": "@neo4j_password",
+    "GEMINI_API_KEY": "@gemini_api_key",
+    "OLLAMA_BASE_URL": "@ollama_base_url",
+    "NEXT_PUBLIC_API_URL": "@next_public_api_url",
+    "API_BASE_URL": "@api_base_url",
+    "ENVIRONMENT": "production",
+    "DEBUG": "false"
+  },
+  "regions": [
+    "iad1"
+  ],
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  },
+  "redirects": [],
+  "rewrites": [],
+  "headers": [
+    {
+      "source": "/api/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache, no-store, must-revalidate"
+        }
+      ]
+    }
+  ]
+}

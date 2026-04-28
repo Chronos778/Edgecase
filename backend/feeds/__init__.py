@@ -1,5 +1,5 @@
 """
-SCARO Feeds Module
+Edgecase Feeds Module
 
 RSS/Atom feed management and social media monitoring.
 """

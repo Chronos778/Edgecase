@@ -46,10 +46,10 @@ async function setup() {
 
     try {
         // 1. Create Role
-        const roleCheck = await client.query("SELECT 1 FROM pg_roles WHERE rolname='scaro_user'");
+        const roleCheck = await client.query("SELECT 1 FROM pg_roles WHERE rolname='edgecase_user'");
         if (roleCheck.rowCount === 0) {
-            console.log('Creating role scaro_user...');
-            await client.query("CREATE ROLE scaro_user LOGIN PASSWORD 'scaro_password' CREATEDB");
+            console.log('Creating role edgecase_user...');
+            await client.query("CREATE ROLE edgecase_user LOGIN PASSWORD 'edgecase_password' CREATEDB");
         } else {
             console.log('Role scaro_user already exists.');
         }

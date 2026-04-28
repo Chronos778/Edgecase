@@ -52,8 +52,8 @@ export function Sidebar() {
       <div className="p-5 border-b border-border/70">
         <div className="flex items-center gap-3 mb-4">
           <Image
-            src="/scaro-logo.png"
-            alt="SCARO Logo"
+            src="/edgecase-logo.png"
+            alt="Edgecase Logo"
             width={44}
             height={44}
             className="object-contain"
@@ -61,7 +61,7 @@ export function Sidebar() {
           />
           <div className="space-y-0.5">
             <h1 className="text-2xl leading-none text-foreground font-heading font-bold tracking-wide">
-              SCARO
+              Edgecase
             </h1>
             <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground font-semibold">
               Risk Command

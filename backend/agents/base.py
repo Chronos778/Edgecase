@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 class BaseAgent(ABC):
     """
-    Abstract base class for all SCARO agents.
+    Abstract base class for all Edgecase agents.
     Enforces a standard lifecycle: Plan -> Execute -> Observe (optional).
     """
 
